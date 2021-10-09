@@ -32,3 +32,11 @@ nav ul li a:hover {
     background-color: var(--cor-secundaria);
     color: var(--cor-principal);
 }
+ul.logos{
+    list-style: none;
+    display:flex;
+    justify-content: space-between;
+}
+.head{
+    
+}

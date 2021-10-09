@@ -1,85 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title></title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
-    </head>	  
-<body>   
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <figure>
+      <img src="./img/logo1.png" alt="logo empresa" width="400" />
+
+      <img src="./img/logo2.png" alt="logo titulo" width="400" />
+    </figure>
+
+    <div class="container" style="margin-top: 40px">
+      <form>
+        <div class="form-group">
+          <label for="">Cliente</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder=" Insira o nome do cliente"
+          />
+        </div>
+
+        <div class="form-group">
+          <label> Selecione a Infra Estrutura</label>
+          <select class="form-control">
+            <option>
+              Infra eletroduto fixado em parede, teto ou estrutura metalica com
+              escada
+            </option>
+            <option>
+              Infra eletroduto fixado em parede, teto ou estrutura metalica com
+              Plataforma
+            </option>
+            <option>Infra eletroduto suspensa (grampo C) com escada</option>
+            <option>Infra eletroduto suspensa (grampo C) com plataforma</option>
+            <option>
+              Infra eletroduto suspensa (outros suportes) com escada
+            </option>
+            <option>
+              Infra eletroduto suspensa (outros suportes) com plataforma
+            </option>
+            <option>
+              Infra Eletrocalha ou perfilado fixado com suporte em parede com
+              escada
+            </option>
+            <option>
+              Infra Eletrocalha ou perfilado suspensa (grampo C) com escada
+            </option>
+            <option>
+              Infra Eletrocalha ou perfilado suspensa (grampo C) com plataforma
+            </option>
+            <option>
+              Infra Eletrocalha ou perfilado suspensa (grampo C) com plataforma
+            </option>
+            <option>
+              Infra Eletrocalha ou perfilado suspensa (grampo C) com plataforma
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Selecione tipo de Cabeamento</label>
+          <select class="form-control">
+            <option>Cabo de rede em Eletroduto / canaletas com escada</option>
+            <option>
+              Cabo de rede em Eletroduto / canaletas com plataforma
+            </option>
+            <option>Cabo de rede em Eletroduto / canaletas Subterrâneo</option>
+            <option>
+              Fibra / Cabo telefônico em eletrocalha e perfilado com escada
+            </option>
+            <option>
+              Fibra / Cabo telefônico em eletrocalha e perfilado com plataforma
+            </option>
+            <option>Cabo eletrico em Eletroduto / canaletas com escada</option>
+            <option>
+              Cabo eletrico em Eletroduto / canaletas com plataforma
+            </option>
+            <option>Cabo eletrico em Eletroduto / canaletas Subterrâneo</option>
+            <option></option>
+            <option></option>
+            <option></option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-outline-success btn-sm">
+          Cadastrar
+        </button>
       </form>
-      <figure>
-        <img src="./img/logo1.png" alt="logo empresa">
-        <img src="./img/logo2.png" alt="logo titulo">
-      </figure>
-      <nav    >
-        <ul>
-            <li><a href="#"> Formulários</a></li>
-            <li><a href="#"> Relatórios</a></li>
-            <li><a href="#"> Gráficos</a></li>
-            <li><a href="#contato">Projeto</a></li>
-            <li><a href="#contato">Sair</a></li>
-        </ul>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#"> Formulários</a></li>
+        <li><a href="#"> Relatórios</a></li>
+        <li><a href="#"> Gráficos</a></li>
+        <li><a href="#">Projeto</a></li>
+        <li><a href="#">Sair</a></li>
+      </ul>
     </nav>
-    <div class="">
-        <label">Cliente</label>
-          <input type="text" class="" id="" placeholder="Nome do cliente">
-    </div>
-    
-    <div class="">
-        <label">Equipe</label>
-          <input type="text" class="" id="" placeholder=" Informe os nomes">
-    </div>
-    
-    <div class="">
-        <label"> Data</label>
-          <input type="date" class="" id="" placeholder="">
-    </div>
- 
-</body>
-    <select class="form-select" size="3" aria-label="size 3 select example">
-        <option selected> Selecione a atividade</option>
-        <option value="1">Infra eletroduto fixado em parede, teto ou estrutura metalica com escada
-        </option>
-        <option value="2">	Infra eletroduto fixado em parede, teto ou estrutura metalica com Plataforma
-        </option>
-        <option value="3">Infra eletroduto suspensa (grampo C) com escada</option>
-        <option value="4">	Infra eletroduto suspensa (grampo C) com plataforma</option>
-        <option value="5">Infra eletroduto suspensa (outros suportes) com escada	</option>
-        <option value="6">	Infra eletroduto suspensa (outros suportes) com plataforma	</option>
-        <option value="7"> Infra Eletrocalha ou perfilado fixado com suporte em parede com escada	</option>
-        <option value="8"> Infra Eletrocalha ou perfilado suspensa (grampo C) com escada </option>
-        <option value="9"> Infra Eletrocalha ou perfilado suspensa (grampo C) com plataforma	</option>
-        <option value="10"> Infra Eletrocalha ou perfilado suspensa (outros suportes) com escada	</option>
-        <option value="11">Infra Eletrocalha ou perfilado suspensa (outros suportes) com plataforma	</option>
- </select>
 
- <div class="">
-    <label">Quantidade</label>
-      <input type="number" class="" id="" placeholder="">
-</div>
-<select class="form-select" size="3" aria-label="size 3 select example">
-    <option selected> Selecione o tipo de cabeamento</option>
-    <option value="1">Cabo de rede em Eletroduto / canaletas com escada</option>
-    <option value="2">	Cabo de rede em Eletroduto / canaletas com plataforma	</option>
-    <option value="3"> Cabo de rede em Eletroduto / canaletas Subterrâneo</option>
-    <option value="4"> Fibra / Cabo telefônico em eletrocalha e perfilado com escada	</option>
-    <option value="5"> Fibra / Cabo telefônico em eletrocalha e perfilado com plataforma	</option>
-    <option value="6"> Cabo eletrico em Eletroduto / canaletas com escada	</option>
-    <option value="7"> 	Cabo eletrico em Eletroduto / canaletas com plataforma	</option>
-    <option value="8"> Cabo eletrico em Eletroduto / canaletas Subterrâneo </option>
-    <a class="btn btn-primary" href="#" role="button">Link</a>
-
-    <input class="btn btn-outline-danger btn-sm" type="button" value=" Encerrar">
-    <button type="button" class="btn btn-outline-success btn-sm"> Nova atividade</button>
-    <p> Observações </p>
-</body>
-
-
-
-
-
-
-
+    <input
+      class="btn btn-outline-danger btn-sm"
+      type="button"
+      value=" Encerrar"
+    />
+    <button type="button">Nova atividade</button>
+    <p>Observações</p>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
