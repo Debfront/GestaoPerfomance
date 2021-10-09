@@ -40,6 +40,9 @@ ul.logos{
 .head{
     
 }
+#logo2{
+   
+}
 #tamanhoMenu{
     margin-top: -650px;
 }
@@ -51,4 +54,5 @@ ul.logos{
     background-color: #FF1168;
     color:rgb(222, 228, 235);
     font-weight: bold;
+    align-items:center;
 }
