@@ -2,7 +2,7 @@
     --cor-principal: rgb(73, 113, 149);
     --cor-secundaria: rgb(222, 228, 235);
 }
-
+/*CSS Menu*/
 nav {
     max-width: 350px;
     width: 100%;
@@ -40,6 +40,7 @@ ul.logos{
 .head{
     
 }
+
 #logo2{
    
 }
