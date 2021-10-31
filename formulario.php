@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<?php 
+  session_start(); //Inicia sessão
+  if(!isset($_SESSION['id'])){
+    header("Location: login.php");  //Leva o usuário para tela de login caso não esteja logado
+  }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title> Formulário de Gestão</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
-</head>
+  include_once 'headerDeb.php';
+?>
 
 <body>
   <figure>
@@ -23,9 +19,9 @@
           <label> Cliente</label>
           <select class="form-control">
             <option>----</option>
-            <option> Elgin VS001305 </option>
-            <option> Hosp São Francisco MA010735</option>
-            <option> Toniato Paulinia MA010821</option>
+            <option>Elgin VS001305 </option>
+            <option>Hosp São Francisco MA010735</option>
+            <option>Toniato Paulinia MA010821</option>
             <option>Toniato Dourados MA010824</option>
             <option>Fini VS001397</option>
             <option>Panasonic RP00101</option>
@@ -103,7 +99,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for=""> Tempo de conclusão</label>
+        <label for=""> Tempo de conclusão (minutos)</label>
         <input type="number" class="form-control" placeholder=" Insira o tempo" />
       </div>
       <div class="form-group">
