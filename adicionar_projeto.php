@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title> Adicionar novo projeto</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
-</head>
+<?php 
+  session_start(); //Inicia sessão
+  if(!isset($_SESSION['id'])){
+    header("Location: login.php");  //Leva o usuário para tela de login caso não esteja logado
+  }
+  include_once 'headerDeb.php';
+?>
 
 <body>
   <img src="./img/logo1.png">
@@ -45,12 +40,8 @@
         </form>
       </div>
     
-
-
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
 </body>
-
 </html>
