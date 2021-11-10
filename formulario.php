@@ -13,7 +13,7 @@
    </figure>
 
   <div class="container" id="tamanhoContainer">
-    <h4>Formulário de Atividades</h4>
+    <h4>Formulário</h4>
     <form>
         <div class="form-group">
           <label> Cliente</label>
