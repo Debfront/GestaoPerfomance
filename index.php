@@ -24,7 +24,7 @@
               echo '<li><a href="login.php">Login</a></li>';
               echo '<li><a href="cadastro.php">Registrar</a></li>';
           }
-      ?>
+        ?>
     </ul>
   </nav>
 

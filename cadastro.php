@@ -45,6 +45,7 @@
 </div>
    
 <?php
+// Pega a query error pra definir a mensagem de erro
     if(isset($_GET['error'])){
         if($_GET['error'] == 'missinginput'){
             echo '<p>You need to fill all the inputs!</p>';
