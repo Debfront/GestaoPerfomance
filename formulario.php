@@ -14,7 +14,7 @@
 
   <div class="container" id="tamanhoContainer">
     <h4>Formulário</h4>
-    <form>
+    <form action="includes/formulario.inc.php" method="POST">
         <div class="form-group">
           <label> Cliente</label>
           <select class="form-control">
