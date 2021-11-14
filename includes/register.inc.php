@@ -1,5 +1,5 @@
 <?php
-// Caso o usuário entre no arquivo através do método post, com um botão com nome submit
+
 if(isset($_POST["submit"])){
     
     $name = $_POST["nome"];

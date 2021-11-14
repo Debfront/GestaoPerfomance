@@ -4,7 +4,6 @@
         header("Location: login.php");  //Leva o usuário para tela de login caso não esteja logado
       }
     include_once 'headerDeb.php';
-    include_once 'includes/dbh.inc.php';
 ?>
 
 <div class="container" style="margin-top:40px">
@@ -19,25 +18,6 @@
             <th scope="col">Data Fim</th>
             <th scope="col">Ação</th>
          </tr>
-            <?php
-                $sql = 'SELECT p.proposta, p.data_inicio, p.data_termino, c.nome_cliente FROM clientes c
-                RIGHT JOIN projeto p ON p.Clientes_idClientes=c.idClientes ORDER BY p.data_inicio ASC;';
-                $result = mysqli_query($conn, $sql);
-            // Faz um loop pela tabela e escreve ela na tela
-                while($row = mysqli_fetch_array($result)){
-                    $proposta = $row['proposta'];
-                    $cliente = $row['nome_cliente'];
-                    $data_inicio = $row['data_inicio'];
-                    $data_termino = $row['data_termino'];
-            ?>
-            
-            <td><?php echo $proposta ?></td>
-            <td><?php echo $cliente ?></td>
-            <td><?php echo $data_inicio ?></td>
-            <td><?php echo $data_termino ?></td>
-          </tr>
-            <?php } ?>
-
          </thead>
          <tbody>
              <tr>
