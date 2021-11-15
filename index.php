@@ -6,10 +6,14 @@
 
 <body>
   <figure>
-    <img src="./img/logo1.png" alt="logo empresa" width="400" />
+    <a href="index.php"><img src="./img/logo1.png" alt="logo empresa" width="400" /></a>
     <img src="./img/logo2.png" alt="logo titulo" width="400" />
   </figure>
-
+  <?php
+  if(isset($_SESSION['id'])){
+    echo '<h3>Seja bem vindo ' . $_SESSION['name'] . '!</h3>';
+  }
+  ?>
   <nav>
     <ul>
       <li><a href="formulario.php"> Formulários</a></li>
@@ -24,7 +28,7 @@
               echo '<li><a href="login.php">Login</a></li>';
               echo '<li><a href="cadastro.php">Registrar</a></li>';
           }
-      ?>
+        ?>
     </ul>
   </nav>
 

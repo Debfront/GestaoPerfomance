@@ -4,37 +4,60 @@
     header("Location: login.php");  //Leva o usuário para tela de login caso não esteja logado
   }
   include_once 'headerDeb.php';
+  include_once 'includes/dbh.inc.php';
+
+  if(isset($_GET['error'])){
+    if($_GET['error'] == 'missinginput'){
+        echo '<p>You need to fill all the inputs!</p>';
+    }
+    elseif($_GET['error'] == 'failedtosaveform'){
+        echo '<p>An error occurred while trying to save the form</p>';
+    }
+}
 ?>
 
 <body>
-  <img src="./img/logo1.png">
+  <a href="index.php"><img src="./img/logo1.png"></a>
 
     <div class="container" id="tamanhoContainer">
         <h4>Adicionar Projeto</h4>
    
-        <form>
+        <form action="includes/projeto.inc.php" method="POST">
           <div class="form-group">
             <label for="">Proposta</label>
-            <input type="text" class="form-control" placeholder=" Insira as informações"/>
+            <input name="proposta" type="text" class="form-control" placeholder=" Insira as informações"/>
           </div>
           <div class="form-group">
             <label for=""> Cliente</label>
-            <input type="text" class="form-control" placeholder=" Insira o nome do cliente" />
+            <select class="form-control" name="cliente">   
+            <?php
+              echo '<option> ----- </option>';
+
+              $sql = 'SELECT * FROM `clientes` WHERE Usuarios_idUsuarios = ' . $_SESSION['id'];
+              $result = mysqli_query($conn, $sql);
+            // Faz um loop pela tabela e escreve ela na tela
+              while($row = mysqli_fetch_array($result)){
+                echo '<option value=' . $row['idClientes'] . '>' . $row['nome_cliente'] . '</option>';
+              }
+            ?>
+          </select>
           </div>
           <div class="form-group">
             <label for="">Data Inicio</label>
-            <input type="date" class="form-control" />
+            <input name="data-inicio" type="date" class="form-control" />
           </div>
           <div class="form-group">
             <label for="">Data Fim</label>
-            <input type="date" class="form-control" />
+            <input name="data-fim" type="date" class="form-control" />
           </div>
     
           <div style="text-align: right">
-            <button type="button" id="botão" class="btn btn-sm">
+            <button name="submit" type="submit" id="botão" class="btn btn-sm">
               Novo Projeto
             </button>
-            <button type="button" class="btn btn-info btn-sm">Voltar</button>
+            <button type="button" class="btn btn-info btn-sm" onclick="location.href='card.php'">
+              Voltar
+            </button>
           </div>
         
         </form>

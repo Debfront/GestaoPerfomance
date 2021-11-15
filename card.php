@@ -6,7 +6,7 @@
     include_once 'headerDeb.php';
 ?>
 </head>
-<img src="./img/logo1.png">
+<a href="index.php"><img src="./img/logo1.png"></a>
 <div class="container-projeto" style="margin-top:100px">
     <div class="row">
         <div class="col-sm-6">
@@ -14,7 +14,7 @@
             <div class="card-body">
               <h5 class="card-title"> Adicionar Projeto</h5>
               <p class="card-text"> Opção para adicionar novos projetos</p>
-              <a href="adicionar_projeto.html" class="btn btn-info"> Cadastrar Projeto</a>
+              <a href="adicionar_projeto.php" class="btn btn-info"> Cadastrar Projeto</a>
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="card-body">
               <h5 class="card-title"> Listar Projeto</h5>
               <p class="card-text"> Opção para listar, editar e excluir projetos</p>
-              <a href="listar_projetos.html" class="btn btn-info"> Projetos</a>
+              <a href="listar_projetos.php" class="btn btn-info"> Projetos</a>
             </div>
           </div>
         </div>
@@ -32,7 +32,10 @@
               <div class="card-body">
                 <h5 class="card-title">Cadastrar Clientes</h5>
                 <p class="card-text"> Opção para cadastro de novos clientes</p>
-                <a href="#" class="btn btn-info">Cadastrar clientes</a>
+                <form action="includes/addclient.inc.php" method="POST">
+                  <button type="submit" name="submit" class="btn btn-info">Cadastrar clientes</button>
+                  <input type="text" id="floatingInputUsername" name="cliente" placeholder="Nome do cliente" class="form-control">
+                </form>
               </div>
             </div>
         </div>
