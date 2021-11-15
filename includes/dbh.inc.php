@@ -3,7 +3,7 @@ $serverName = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
 $dbName     = "smartfast";
-$port       = 3307;
+$port       = 3306;
 
 $conn = mysqli_connect($serverName . ':' . $port, $dbUsername, $dbPassword, $dbName);
 
