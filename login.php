@@ -25,7 +25,7 @@
         <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
           <div class="card-img-left d-none d-md-flex">
             <!-- Background image for card set in CSS! -->
-            <img src="img/UNIVESP.png">
+            <a href="index.php"><img src="img/UNIVESP.png"/></a>
           </div>
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5"><i class="fas fa-lock fa-4x" ></i></h5>
