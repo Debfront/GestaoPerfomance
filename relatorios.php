@@ -4,22 +4,22 @@
   if(!isset($_SESSION['id'])){
     header("Location: login.php");  //Leva o usuário para tela de login caso não esteja logado
   }
-
-
     if(array_key_exists('botaoGerarRelatorio', $_POST)) {
       generateReport($_POST);
+      
     }
     
 ?>
 
 <script type = "text/javascript">
     function disableDrop(){
-     if(mainForm.tipoRel.options[4].selected){
-      mainForm.tipoProj.disabled = false;
+     if(RelForm.tipoRel.options[1].selected){
+      RelForm.dataInicial.disabled = true;
+      RelForm.dataFinal.disabled = true;
      }
      else{
-      mainForm.tipoProj.value = "";
-      mainForm.tipoProj.disabled = true;
+      RelForm.dataInicial.disabled = false;
+      RelForm.dataFinal.disabled = false;
      }
     }
 </script>
@@ -43,44 +43,32 @@
    </figure>
  
   <div class="container" id="tamanhoContainer">
-    <h4>Relatório Gráfico</h4>
-    <form id = "mainForm" method ="POST">
+    <h4>Relatórios</h4>
+    <form id = "RelForm" method ="POST">
     <div class="form-group">
           <label> Tipo </label>
           <select required class="form-control" id="tipoRel" class="btn btn-sm" name = "titulo_relatorio" onchange = "disableDrop();">
             <option value ="">----</option>
-            <option> Tempo Médio por Tipo de Infraestrutura</option>
-            <option> Tempo Médio por Projeto</option>
-            <option> Total Instalado por Projeto</option>
-            <option> Instalado do Projeto por Dia</option>
-            </select>
-            </div>
-        <div class="form-group">
-          <label> Código do Projeto</label>
-          <select required class="form-control" id="tipoProj" class="btn btn-sm" name = "codigoprojeto" disabled>
-            <option value="">----</option>
-            <option> VS001305 </option>
-            <option> MA010735</option>
-            <option> MA010821</option>
-            <option>MA010824</option>
-            <option>VS001397</option>
-            <option>RP00101</option>
+            <option> Clientes</option>
+            <option> Projetos</option>
+            <option> Atividades em Andamento</option>
+            <option> Atividades Finalizadas</option>
             </select>
             </div>
       <div class="form-group">
         <label for="">Data Inicial</label>
-        <input required type="date" class="form-control" name = "datainicial" />
+        <input required type="date" id="dataInicial" class="form-control" name = "datainicial" />
       </div>
       <div class="form-group">
         <label for="">Data Final</label>
-        <input required type="date" class="form-control" name = "datafinal" />
+        <input required type="date" id="dataFinal" class="form-control" name = "datafinal" />
       </div>
       <div style="text-align: right">
         <button type="submit" id="botão" class="btn btn-sm" name = "botaoGerarRelatorio">
           Gerar Relatório
         </button>
         <button onClick="history.go(-1)"  type="button" class="btn btn-info btn-sm">Voltar</button>
-      </div class="btn btn-sm"><a href="RelAtividadesFinalizadas1637161112.pdf" target="_blank">
+      </div>
     </form>
   </div>
 

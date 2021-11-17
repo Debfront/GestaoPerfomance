@@ -18,15 +18,11 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<parameter name="datainicial" class="java.lang.String"/>
-	<parameter name="datafinal" class="java.lang.String"/>
-	<parameter name="titulo_relatorio" class="java.lang.String"/>
-	<parameter name="SQLdatainicial" class="java.sql.Date" isForPrompting="false">
-		<defaultValueExpression><![CDATA[$P{SQLdatainicial}.valueOf( $P{datainicial} )]]></defaultValueExpression>
-	</parameter>
-	<parameter name="SQLdatafinal" class="java.sql.Date" isForPrompting="false">
-		<defaultValueExpression><![CDATA[$P{SQLdatafinal}.valueOf( $P{datafinal} )]]></defaultValueExpression>
-	</parameter>
+	<parameter name="datainicial" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="datafinal" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="titulo_relatorio" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SQLdatainicial" class="java.sql.Date" isForPrompting="false"/>
+	<parameter name="SQLdatafinal" class="java.sql.Date" isForPrompting="false"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT  smartfast.projeto.proposta ,
 	COUNT( smartfast.cadastro.`idCadastro`) AS TarefasTotais,
@@ -147,32 +143,32 @@ GROUP BY  smartfast.cadastro.`Projeto_idProjeto`]]>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="227" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="186533b7-e1e5-4bc4-af53-1647013d7b7d"/>
+					<reportElement x="251" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="186533b7-e1e5-4bc4-af53-1647013d7b7d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12"/>
 					</textElement>
 					<text><![CDATA[Período:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="300" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="7045eb16-8f72-4b2c-ae33-8898644d32ed"/>
+					<reportElement x="324" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="7045eb16-8f72-4b2c-ae33-8898644d32ed"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{datainicial}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="400" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="d04352e3-5ef3-4742-9f82-6dbd9b9092ce"/>
+					<reportElement x="424" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="d04352e3-5ef3-4742-9f82-6dbd9b9092ce"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{datafinal}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="352" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="792b38cc-5e95-40a9-8e51-c3a5e79c9050"/>
+					<reportElement x="376" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="792b38cc-5e95-40a9-8e51-c3a5e79c9050"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12"/>
 					</textElement>
-					<text><![CDATA[-]]></text>
+					<text><![CDATA[até]]></text>
 				</staticText>
 			</frame>
 		</band>
