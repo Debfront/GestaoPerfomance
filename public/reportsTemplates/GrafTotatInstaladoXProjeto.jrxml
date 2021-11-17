@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TotatInstaladoXProjeto" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c368610e-5bee-4e75-8f1e-ecda64380534">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="47"/>
+	<property name="ireport.y" value="451"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="smartfast.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="471"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="524"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="datainicial" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="datafinal" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="titulo_relatorio" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SQLdatainicial" class="java.sql.Date" isForPrompting="false"/>
+	<parameter name="SQLdatafinal" class="java.sql.Date" isForPrompting="false"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT  smartfast.projeto.proposta ,
+	COUNT( smartfast.cadastro.`idCadastro`) AS TarefasTotais,
+	COUNT(CASE WHEN  smartfast.cadastro.`tempo_conclusao` THEN 1 END) AS TarefasConcluidas
+FROM smartfast.cadastro
+JOIN  smartfast.projeto  ON  smartfast.cadastro.`Projeto_idProjeto`  =  smartfast.projeto.`idProjeto` 
+WHERE  
+smartfast.cadastro.tempo_conclusao IS NOT NULL
+AND
+smartfast.cadastro.tempo_conclusao  BETWEEN $P{SQLdatainicial}  AND $P{SQLdatafinal}
+GROUP BY  smartfast.cadastro.`Projeto_idProjeto`]]>
+	</queryString>
+	<field name="proposta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="proposta"/>
+		<property name="com.jaspersoft.studio.field.label" value="proposta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projeto"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TarefasTotais" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="TarefasTotais"/>
+		<property name="com.jaspersoft.studio.field.label" value="TarefasTotais"/>
+	</field>
+	<field name="TarefasConcluidas" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="TarefasConcluidas"/>
+		<property name="com.jaspersoft.studio.field.label" value="TarefasConcluidas"/>
+	</field>
+	<background>
+		<band height="555" splitType="Stretch">
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="100" width="802" height="380" uuid="dc9ed4ee-74d3-404d-b9bc-a12cbd1e132e"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report"/>
+					<categorySeries>
+						<seriesExpression><![CDATA["TAREFAS TOTAIS"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{proposta}]]></categoryExpression>
+						<valueExpression><![CDATA[MAX($F{TarefasTotais} )]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["TAREFAS CONCLUIDAS"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{proposta}]]></categoryExpression>
+						<valueExpression><![CDATA[MAX($F{TarefasConcluidas} )]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#006699" backcolor="#006699" uuid="83f5e806-cc04-4161-87a9-07633f604bc1"/>
+				<textField>
+					<reportElement x="0" y="0" width="822" height="65" forecolor="#FFFFFF" uuid="9336537a-7b6c-4c2b-9f83-4869fe48610e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="26"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{titulo_relatorio}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="c23ffbf7-1928-41f8-ade3-5930d9a4871d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699" uuid="6f4fe8ef-88ca-4d5d-b46a-054826bb7893"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" uuid="970781d6-87a0-4d3d-a07b-5ae173a1317a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" uuid="42664b34-c87b-42f8-911b-bd9c2ab9111e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" uuid="06b3d6e8-b4a5-4251-b1fb-f640689933e8"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="251" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="186533b7-e1e5-4bc4-af53-1647013d7b7d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<text><![CDATA[Período:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="324" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="7045eb16-8f72-4b2c-ae33-8898644d32ed"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{datainicial}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="424" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="d04352e3-5ef3-4742-9f82-6dbd9b9092ce"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{datafinal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="376" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="792b38cc-5e95-40a9-8e51-c3a5e79c9050"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<text><![CDATA[até]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

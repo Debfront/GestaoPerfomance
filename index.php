@@ -17,8 +17,8 @@
   <nav>
     <ul>
       <li><a href="formulario.php"> Formulários</a></li>
-      <li><a href="#"> Relatórios</a></li>
-      <li><a href="#"> Gráficos</a></li>
+      <li><a href="relatorios.php"> Relatórios</a></li>
+      <li><a href="graficos.php"> Gráficos</a></li>
       <li><a href="card.php">Projeto</a></li>
       <!-- Testa se o usuário está logado, se estiver fornece o botão sair, se não, os botões de login e registro -->
         <?php

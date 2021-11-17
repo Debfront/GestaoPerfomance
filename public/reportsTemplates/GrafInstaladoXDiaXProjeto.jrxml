@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InstaladoXDia" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c368610e-5bee-4e75-8f1e-ecda64380534">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="47"/>
+	<property name="ireport.y" value="451"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="smartfast.xml"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="datainicial" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="datafinal" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="titulo_relatorio" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="SQLdatainicial" class="java.sql.Date" isForPrompting="false"/>
+	<parameter name="SQLdatafinal" class="java.sql.Date" isForPrompting="false"/>
+	<parameter name="codigoprojeto" class="java.lang.String" isForPrompting="false"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+smartfast.cadastro.tempo_conclusao,
+ COUNT(smartfast.cadastro.tempo_conclusao) AS QTD
+ FROM  smartfast.cadastro
+INNER JOIN 
+ smartfast.projeto
+ ON  smartfast.cadastro.`Projeto_idProjeto` = smartfast.projeto.`idProjeto` 
+ WHERE  smartfast.projeto.proposta = $P{codigoprojeto} AND
+  smartfast.cadastro.tempo_conclusao BETWEEN  $P{SQLdatainicial}  AND $P{SQLdatafinal}
+  GROUP BY smartfast.cadastro.tempo_conclusao
+  ORDER BY  smartfast.cadastro.tempo_conclusao ASC]]>
+	</queryString>
+	<field name="tempo_conclusao" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tempo_conclusao"/>
+		<property name="com.jaspersoft.studio.field.label" value="tempo_conclusao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cadastro"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="QTD" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="QTD"/>
+		<property name="com.jaspersoft.studio.field.label" value="QTD"/>
+	</field>
+	<background>
+		<band height="555" splitType="Stretch">
+			<lineChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="130" width="802" height="400" uuid="89ebd6a0-1a3d-48eb-a229-e3524be7c11b"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report"/>
+					<categorySeries>
+						<seriesExpression><![CDATA["QUANTIDADE INSTALADA"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{tempo_conclusao}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{QTD}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot labelRotation="0.0"/>
+					<categoryAxisFormat labelRotation="0.0">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" verticalTickLabels="false" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" tickLabelMask="" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+		</band>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#006699" backcolor="#006699" uuid="83f5e806-cc04-4161-87a9-07633f604bc1"/>
+				<textField>
+					<reportElement x="0" y="0" width="822" height="65" forecolor="#FFFFFF" uuid="8ea20d5c-c94a-4edd-a946-0900d748c349"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="26"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{titulo_relatorio}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="380" y="0" width="422" height="42" uuid="f59bb004-21ca-41e8-ba40-d881eb200b1d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="26"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{codigoprojeto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="340" height="44" uuid="5826a916-a1e7-440e-b79c-44d60e13db8c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="26"/>
+				</textElement>
+				<text><![CDATA[Projeto:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="c23ffbf7-1928-41f8-ade3-5930d9a4871d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699" uuid="6f4fe8ef-88ca-4d5d-b46a-054826bb7893"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" uuid="970781d6-87a0-4d3d-a07b-5ae173a1317a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" uuid="42664b34-c87b-42f8-911b-bd9c2ab9111e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" uuid="06b3d6e8-b4a5-4251-b1fb-f640689933e8"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="247" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="256fff66-a9af-4fe7-851f-a67fe909741c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<text><![CDATA[Período:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="320" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="ce738d65-004e-4241-9363-693b369b9278"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{datainicial}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="420" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="9d528225-58d4-4ec3-9d28-e286654d55a9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{datafinal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="372" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="75468954-94ee-495c-90f6-33cb6eb29c17"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<text><![CDATA[até]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

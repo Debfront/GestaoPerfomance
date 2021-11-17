@@ -3,7 +3,7 @@ $serverName = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
 $dbName     = "smartfast";
-$port       = 3307;
+$port       = 3306;
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 // Caso não tenha duas portas diferentes, não é necessário a variável porta com a concatenação
